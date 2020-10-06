@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E00C224252BDC3700EC2E9E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C223252BDC3700EC2E9E /* Manager.swift */; };
+		0E00C325252C7EA200EC2E9E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C324252C7EA200EC2E9E /* APIClient.swift */; };
 		0EDDCE9C251EB5A40006CEDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDCE9B251EB5A40006CEDD /* AppDelegate.swift */; };
 		0EDDCE9E251EB5A40006CEDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDCE9D251EB5A40006CEDD /* SceneDelegate.swift */; };
 		0EDDCEA0251EB5A40006CEDD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDCE9F251EB5A40006CEDD /* DetailViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		0E00C223252BDC3700EC2E9E /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		0E00C324252C7EA200EC2E9E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		0EDDCE98251EB5A40006CEDD /* refactoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = refactoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EDDCE9B251EB5A40006CEDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EDDCE9D251EB5A40006CEDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E00C323252C7E8600EC2E9E /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				0E00C324252C7EA200EC2E9E /* APIClient.swift */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
 		0EDDCE8F251EB5A30006CEDD = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		0EDDCE9A251EB5A40006CEDD /* refactoring */ = {
 			isa = PBXGroup;
 			children = (
+				0E00C323252C7E8600EC2E9E /* NetWork */,
 				0EDDCE9B251EB5A40006CEDD /* AppDelegate.swift */,
 				0EDDCECE251EB5CB0006CEDD /* SearchViewController.swift */,
 				0EDDCE9D251EB5A40006CEDD /* SceneDelegate.swift */,
@@ -268,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EDDCED4251EB6A70006CEDD /* Model.swift in Sources */,
+				0E00C325252C7EA200EC2E9E /* APIClient.swift in Sources */,
 				0E00C224252BDC3700EC2E9E /* Manager.swift in Sources */,
 				0EDDCEA0251EB5A40006CEDD /* DetailViewController.swift in Sources */,
 				0EDDCE9C251EB5A40006CEDD /* AppDelegate.swift in Sources */,

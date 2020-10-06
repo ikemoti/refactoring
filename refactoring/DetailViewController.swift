@@ -8,8 +8,6 @@
 import UIKit
 
 final class DetailViewController: UIViewController {
-    
-    
     private let imageView: UIImageView = .init()
     private let titleLabel: UILabel = .init()
     private let languageLabel: UILabel = .init()

@@ -22,7 +22,9 @@ class Manager{
         self.client = GithubAPIClient()}
     
     func load(user: String, completion: @escaping () -> Void){
-        self.client.fetchRepositories(text: user){ (repositories) in
+        self.client.fetchRepositories(text: user,handler: { ([T]?) in
+            <#code#>
+        }){ (repositories) in
             self.repositories = repositories
             completion()
         }

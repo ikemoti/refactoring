@@ -12,7 +12,7 @@ final class SearchViewController: UIViewController, UISearchBarDelegate, UITable
     private let searchBar: UISearchBar = .init()
     private let tableView: UITableView = .init()
     private let navigationBar: UINavigationBar = .init()
-    var repository: GithubSearchResult = .init(items: [])
+    var repositories: [Repository] = []
     var fetchedrepository: Repository = .init(id: 0, name: "", description: "", stargazersCount: 0)
     var idx: Int?
     
@@ -42,8 +42,8 @@ final class SearchViewController: UIViewController, UISearchBarDelegate, UITable
             guard let url: URL = URL(string: "https://api.github.com/search/repositories?q=\(word)") else {return}
             task = URLSession.shared.dataTask(with: url) { [self] (data, res, err) in
                 if let data = data {
-                    guard let test = try? JSONDecoder().decode(GithubSearchResult.self, from: data) else {return}
-                    self.repository = test
+                    guard let test = try? JSONDecoder().decode([Repository].self, from: data) else {return}
+                    self.repositories = test
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -53,11 +53,11 @@ final class SearchViewController: UIViewController, UISearchBarDelegate, UITable
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repository.items.count
+        return repositories.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = .init()
-        let rp: Repository = repository.items[indexPath.row]
+        let rp: Repository = repositories[indexPath.row]
         cell.textLabel?.text = rp.name
         cell.detailTextLabel?.text = rp.name
         cell.tag = indexPath.row
@@ -66,7 +66,7 @@ final class SearchViewController: UIViewController, UISearchBarDelegate, UITable
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         idx = indexPath.row
-        fetchedrepository = repository.items[indexPath.row]
+        fetchedrepository = repositories[indexPath.row]
         self.performSegue(withIdentifier: "toDetail", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

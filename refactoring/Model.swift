@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-struct Repository: Codable, Identifiable, Equatable {
+struct Repository: Decodable {
     let id: Int
     let name: String
     let description: String?
@@ -23,15 +22,16 @@ struct Repository: Codable, Identifiable, Equatable {
 }
 
 class GithubAPIClient {
-    func fetchRepositories(text: String, handler: @escaping ([Repository]?) -> Void){
-        guard let url: URL = URL(string: "https://api.github.com/search/repositories?q=\(text)") else {return}
+    func fetchRepositories<T: Decodable>(text: String, handler: @escaping ([T]?) -> Void){
+        guard let url: URL = URL(string: "https://api.github.com/search/repositories?q=\(text)") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: url){ (data, _, error) in
             guard let data = data , error == nil  else {
                 handler(nil)
                 return }
-            guard let test = try? JSONDecoder().decode([Repository].self, from: data) else {return}
+            guard let test = try? JSONDecoder().decode([T].self, from: data) else { return }
             DispatchQueue.main.async {
+                
                 handler(test)
             }
             
